@@ -22,7 +22,7 @@ void setup() {
   myPID.SetOutputLimits(-255, 255);
   Serial.begin (115200);
   starttime = 0;
-  input = myEnc.read();
+  input = myEnc.read(); // read value of original position 
 }
 
 void loop() {
