@@ -10,16 +10,17 @@ const int IN3=8;
 const int IN4=9;
 
 double r =0.1;
-double kp = 0.3, ki = 0, kd = 0; // modify for optimal performance
+double kp1 = 0.4, ki1 = 0, kd1 = 0; // modify for optimal performance
+double kp2 = 0.3, ki2 = 0, kd2 = 0; // modify for optimal performance
 double input1 = 0, output1 = 0, setpoint1 = 0;
 double input2 = 0, output2 = 0, setpoint2 = 0;
 double starttime;
-double encoder_res = 4800; // enconder resolution 
+double encoder_res = 2400; // enconder resolution 
 Encoder myEnc1(2,4);
 Encoder myEnc2(3,5); // xanh lá là chân số 5  
 
-PID myPID1(&input1, &output1, &setpoint1, kp, ki, kd, DIRECT);  // if motor will only run at full speed try 'REVERSE' instead of 'DIRECT' 
-PID myPID2(&input2, &output2, &setpoint2, kp, ki, kd, DIRECT);  // if motor will only run at full speed try 'REVERSE' instead of 'DIRECT' 
+PID myPID1(&input1, &output1, &setpoint1, kp1, ki1, kd1, DIRECT);  // if motor will only run at full speed try 'REVERSE' instead of 'DIRECT' 
+PID myPID2(&input2, &output2, &setpoint2, kp2, ki2, kd2, DIRECT);  // if motor will only run at full speed try 'REVERSE' instead of 'DIRECT' 
 
 void setup() {
   pinMode(IN1, OUTPUT);
@@ -31,7 +32,7 @@ void setup() {
   digitalWrite(ENB, HIGH);
   myPID1.SetMode(AUTOMATIC);
   myPID1.SetSampleTime(1);
-  myPID1.SetOutputLimits(-255, 255);
+  myPID1.SetOutputLimits(-240, 240);
   
   myPID2.SetMode(AUTOMATIC);
   myPID2.SetSampleTime(1);
@@ -50,8 +51,8 @@ void loop() {
     //Serial.println(delta_time);
     setpoint1 += convert(0);
     setpoint2 += convert(0);
-    //setpoint1 = 24000;
-    //setpoint2 = 24000;  
+    setpoint1 = 2400;
+    setpoint2 = 2400;  
     input1 = myEnc1.read();
     input2 = myEnc2.read();
     Serial.println(input2);
