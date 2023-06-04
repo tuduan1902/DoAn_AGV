@@ -5,14 +5,14 @@
   double kd1 = 0;
 
   double Setpoint1 = 0, Input1 = 0, Output1 = 0, Output1a; // PID variables
-  PID my_PID1(&Input1, &Setpoint1, kp1, ki1, kd1, DIRECT); // PID Setup
+  PID my_PID1(&Input1, &Output1, &Setpoint1, kp1, ki1, kd1, DIRECT); // PID Setup
 
   double kp2 = 0.3;
   double ki2 = 0;
   double kd2 = 0;
 
   double Setpoint2 = 0, Input2 = 0, Output2 = 0, Output2a; // PID variables
-  PID my_PID2(&Input2, &Setpoint2, kp2, ki2, kd2, DIRECT); // PID Setup
+  PID my_PID2(&Input2, &Output2, &Setpoint2, kp2, ki2, kd2, DIRECT); // PID Setup
 
   double r=0.05; // bán kính bánh xe 
   double encoder_res = 2400; // encoder resolution
@@ -85,12 +85,12 @@
       digitalWrite(ENB, HIGH);
 
       my_PID1.SetMode(AUTOMATIC);
-      my_PID1.SetOutputTime(1);
+      my_PID1.SetSampleTime(1);
       my_PID1.SetOutputLimits(-255, 250);
       
 
       my_PID1.SetMode(AUTOMATIC);
-      my_PID1.SetOutputTime(1);
+      my_PID1.SetSampleTime(1);
       my_PID1.SetOutputLimits(-252, 255);
       
       Serial.begin(115200);
