@@ -1,4 +1,5 @@
-  #include <PID_v1.h> //
+  #include <PID_v1.h>
+  #include <Encoder.h>
   double kp1 = 0.4;
   double ki1 = 0;
   double kd1 = 0;
