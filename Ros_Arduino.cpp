@@ -1,14 +1,14 @@
   #include <PID_v1.h> //
-  double kp1 = 4;
-  double ki1 = 4;
-  double kd1 = 0.03;
+  double kp1 = 0.4;
+  double ki1 = 0;
+  double kd1 = 0;
 
   double Setpoint1 = 0, Input1 = 0, Output1 = 0, Output1a; // PID variables
   PID my_PID1(&Input1, &Setpoint1, kp1, ki1, kd1, DIRECT); // PID Setup
 
-  double kp2 = 4;
-  double ki2 = 4;
-  double kd2 = 0.03;
+  double kp2 = 0.3;
+  double ki2 = 0;
+  double kd2 = 0;
 
   double Setpoint2 = 0, Input2 = 0, Output2 = 0, Output2a; // PID variables
   PID my_PID2(&Input2, &Setpoint2, kp2, ki2, kd2, DIRECT); // PID Setup
