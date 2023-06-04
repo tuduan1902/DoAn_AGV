@@ -1,44 +1,44 @@
-#include <PID_v1.h> //
-   double kp1 = 4;
-   double ki1 = 4;
-   double kd1 = 0.03;
+  #include <PID_v1.h> //
+  double kp1 = 4;
+  double ki1 = 4;
+  double kd1 = 0.03;
 
-   double Setpoint1 = 0, Input1 = 0, Output1 = 0, Output1a; // PID variables
-   PID my_PID1(&Input1, &Setpoint1, kp1, ki1, kd1, DIRECT); // PID Setup
+  double Setpoint1 = 0, Input1 = 0, Output1 = 0, Output1a; // PID variables
+  PID my_PID1(&Input1, &Setpoint1, kp1, ki1, kd1, DIRECT); // PID Setup
 
-   double kp2 = 4;
-   double ki2 = 4;
-   double kd2 = 0.03;
+  double kp2 = 4;
+  double ki2 = 4;
+  double kd2 = 0.03;
 
-   double Setpoint2 = 0, Input2 = 0, Output2 = 0, Output2a; // PID variables
-   PID my_PID2(&Input2, &Setpoint2, kp2, ki2, kd2, DIRECT); // PID Setup
+  double Setpoint2 = 0, Input2 = 0, Output2 = 0, Output2a; // PID variables
+  PID my_PID2(&Input2, &Setpoint2, kp2, ki2, kd2, DIRECT); // PID Setup
 
-   double r=0.05; // bán kính bánh xe 
-   double encoder_res = 2400; // encoder resolution
+  double r=0.05; // bán kính bánh xe 
+  double encoder_res = 2400; // encoder resolution
 
-   #define ENA 10 // PWM outputs to L298N H-Bridge motor driver module
-   const int IN1=11;
-   const int IN2=12;
+  #define ENA 10 // PWM outputs to L298N H-Bridge motor driver module
+  const int IN1=11;
+  const int IN2=12;
 
-   #define ENB 7 // PWM outputs to L298N H-Bridge motor driver module
-   const int IN3=8;
-   const int IN4=9;
+  #define ENB 7 // PWM outputs to L298N H-Bridge motor driver module
+  const int IN3=8;
+  const int IN4=9;
    
-   Encoder myEnc1(2, 4);
-   Encoder myEnc2(3, 5);
+  Encoder myEnc1(2, 4);
+  Encoder myEnc2(3, 5);
 
-   // Wheel encoder interrupts
-   #define encoder0PinA 2    // encoder 1
-   #define encoder0PinB 3
+  // Wheel encoder interrupts
+  #define encoder0PinA 2    // encoder 1
+  #define encoder0PinB 3
 
-   #define encoder1PinA 18   // encoder 2 
-   #define encoder1PinA 19
+  #define encoder1PinA 18   // encoder 2 
+  #define encoder1PinA 19
 
-   volatile long encoder0Pos = 0; // encoder 1
-   volatile long encoder1Pos = 0; // encoder 2
+  volatile long encoder0Pos = 0; // encoder 1
+  volatile long encoder1Pos = 0; // encoder 2
 
 
-   void Drive_MotorA(int out) {
+  void Drive_MotorA(int out) {
       //Serial.println(out);
       if (out > 0){
       digitalWrite(IN1,LOW);
