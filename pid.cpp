@@ -98,8 +98,8 @@ void loop() {
                Setpoint1 += convert(0);
                Setpoint2 += convert(1);
             } else if (c == 'p') {
-               Setpoint1 += convert(0);
-               Setpoint2 += convert(0);
+               Setpoint1 = convert(0);
+               Setpoint2 = convert(0);
             }
          } 
     input1 = myEnc1.read();
